@@ -13,15 +13,15 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       <div class="bg-gray-200 rounded-lg shadow p-6 text-center">
         <h2 class="text-gray-600">Availability (A)</h2>
-        <p class="text-2xl font-semibold text-blue-600">92%</p>
+        <div id="radialA"></div>
       </div>
       <div class="bg-gray-200 rounded-lg shadow p-6 text-center">
         <h2 class="text-gray-600">Performance (P)</h2>
-        <p class="text-2xl font-semibold text-green-600">87%</p>
+        <div id="radialP"></div>
       </div>
       <div class="bg-gray-200 rounded-lg shadow p-6 text-center">
         <h2 class="text-gray-600">Quality (Q)</h2>
-        <p class="text-2xl font-semibold text-purple-600">95%</p>
+        <div id="radialQ"></div>
       </div>
     </div>
 
@@ -67,6 +67,37 @@
       },
     };
     new ApexCharts(document.querySelector("#oeeChart"), radialOptions).render();
+
+    // Function to create A P Q charts
+    function createRadialChart(id, value, color) {
+      var options = {
+        chart: { type: "radialBar", height: 250 },
+        series: [value],
+        plotOptions: {
+          radialBar: {
+            hollow: { size: "60%" },
+            track: { background: "#E5E7EB", strokeWidth: "100%" },
+            dataLabels: {
+              name: { show: false },
+              value: {
+                fontSize: "22px",
+                fontWeight: "bold",
+                color: "#111827",
+                offsetY: 6,
+                formatter: (val) => val + "%",
+              },
+            },
+          },
+        },
+        colors: [color],
+      };
+      new ApexCharts(document.querySelector(id), options).render();
+    }
+
+    // ✅ Create A, P, Q charts
+    createRadialChart("#radialA", 92, "#3B82F6");
+    createRadialChart("#radialP", 87, "#10B981");
+    createRadialChart("#radialQ", 95, "#8B5CF6");
 
     // Line Chart
     var lineOptions = {

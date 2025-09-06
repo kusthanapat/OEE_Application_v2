@@ -1,7 +1,13 @@
 <nav class="bg-dark text-white w-full shadow-md">
   <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
     <!-- Brand -->
-    <div class="text-xl font-bold">📊 OEE Dashboard</div>
+    <div class="flex items-center">
+      <img
+        src="{{ url_for('static', filename='images/psc-logo.png') }}"
+        alt="psc logo"
+      />
+      <div class="text-xl font-bold ml-2">OEE Dashboard</div>
+    </div>
 
     <!-- Menu -->
     <div class="flex space-x-6">
