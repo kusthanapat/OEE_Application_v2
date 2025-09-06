@@ -1,0 +1,99 @@
+{% extends 'user_base.html' %} {% block content %}
+<div class="bg-white rounded-lg shadow p-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-gray-200 rounded-lg shadow p-6 text-center">
+        <h2 class="text-gray-600">Availability (A)</h2>
+        <p class="text-2xl font-semibold text-blue-600">92%</p>
+      </div>
+      <div class="bg-gray-200 rounded-lg shadow p-6 text-center">
+        <h2 class="text-gray-600">Performance (P)</h2>
+        <p class="text-2xl font-semibold text-green-600">87%</p>
+      </div>
+      <div class="bg-gray-200 rounded-lg shadow p-6 text-center">
+        <h2 class="text-gray-600">Quality (Q)</h2>
+        <p class="text-2xl font-semibold text-purple-600">95%</p>
+      </div>
+    </div>
+
+    <div class="bg-gray-200 rounded-lg shadow p-6 mb-8">
+      <h2 class="text-xl font-semibold text-gray-700 mb-4">OEE Overview</h2>
+      <div id="oeeChart"></div>
+    </div>
+
+    <div class="bg-gray-200 rounded-lg shadow p-6">
+      <h2 class="text-xl font-semibold text-gray-700 mb-4">
+        OEE Trend (Last 7 Days)
+      </h2>
+      <div id="oeeLineChart"></div>
+    </div>
+  </div>
+
+  <script>
+    // RadialBar Chart
+    var radialOptions = {
+      chart: {
+        type: "radialBar",
+        height: 350,
+      },
+      series: [76],
+      labels: ["OEE"],
+      colors: ["#3B82F6"],
+      plotOptions: {
+        radialBar: {
+          hollow: { size: "60%" },
+          dataLabels: {
+            name: {
+              offsetY: -10,
+              color: "#4B5563",
+              fontSize: "18px",
+            },
+            value: {
+              fontSize: "28px",
+              color: "#111827",
+              offsetY: 10,
+            },
+          },
+        },
+      },
+    };
+    new ApexCharts(document.querySelector("#oeeChart"), radialOptions).render();
+
+    // Line Chart
+    var lineOptions = {
+      chart: {
+        type: "line",
+        height: 350,
+        zoom: { enabled: false },
+      },
+      series: [
+        {
+          name: "OEE %",
+          data: [78, 82, 80, 76, 79, 81, 84], // ตัวอย่างข้อมูล OEE 7 วัน
+        },
+      ],
+      xaxis: {
+        categories: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        title: {
+          text: "Day",
+        },
+      },
+      yaxis: {
+        min: 0,
+        max: 100,
+        title: {
+          text: "OEE (%)",
+        },
+      },
+      stroke: {
+        curve: "smooth",
+      },
+      colors: ["#10B981"], // Tailwind green-500
+    };
+    new ApexCharts(
+      document.querySelector("#oeeLineChart"),
+      lineOptions
+    ).render();
+  </script>
+</div>
+{% endblock %}

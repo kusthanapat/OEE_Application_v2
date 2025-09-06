@@ -1,0 +1,204 @@
+{% extends 'base.html' %} {% block content %}
+<div class="bg-white rounded-lg shadow p-6 max-w-md mx-auto">
+  <h2 class="text-2xl font-bold text-center mb-6">Register</h2>
+
+  <form method="POST" action="{{ url_for('register') }}" class="space-y-4">
+    <div>
+      <label for="firstName" class="block text-sm font-medium text-gray-700"
+        >First Name</label
+      >
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        required
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2"
+        placeholder="First Name"
+      />
+    </div>
+
+    <div>
+      <label for="lastName" class="block text-sm font-medium text-gray-700"
+        >Last Name</label
+      >
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        required
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2"
+        placeholder="Last Name"
+      />
+    </div>
+
+    <div>
+      <label for="username" class="block text-sm font-medium text-gray-700"
+        >Username</label
+      >
+      <input
+        type="text"
+        id="username"
+        name="username"
+        required
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2"
+        placeholder="Username"
+      />
+    </div>
+
+    <div>
+      <label for="password" class="block text-sm font-medium text-gray-700"
+        >Password</label
+      >
+      <div
+        class="flex rounded-md border border-gray-300 transition focus-within:border-blue-500 focus-within:shadow-md"
+      >
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          class="block w-full p-2 pr-10 border-none focus:outline-none sm:text-sm"
+          placeholder="••••••••"
+        />
+        <button
+          type="button"
+          id="togglePassword"
+          class="flex items-center pr-3 focus:outline-none"
+        >
+          <img
+            src="{{ url_for('static', filename='images/view.png') }}"
+            alt="view password"
+            id="eyeIcon"
+            class="h-full w-full max-w-[16px] max-h-[16px] cursor-pointer opacity-70 hover:opacity-100"
+          />
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <label
+        for="confirm_password"
+        class="block text-sm font-medium text-gray-700"
+        >Confirm Password</label
+      >
+      <div
+        class="flex rounded-md border border-gray-300 transition focus-within:border-blue-500 focus-within:shadow-md"
+      >
+        <input
+          type="password"
+          id="confirm_password"
+          name="confirm_password"
+          required
+          class="block w-full p-2 pr-10 border-none focus:outline-none sm:text-sm"
+          placeholder="••••••••"
+        />
+        <button
+          type="button"
+          id="toggleConfirmPassword"
+          class="flex items-center pr-3 focus:outline-none"
+        >
+          <img
+            src="{{ url_for('static', filename='images/view.png') }}"
+            alt="view password"
+            id="eyeIconConfirm"
+            class="h-full w-full max-w-[16px] max-h-[16px] cursor-pointer opacity-70 hover:opacity-100"
+          />
+        </button>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition"
+    >
+      Register
+    </button>
+  </form>
+
+  <p class="mt-4 text-sm text-center text-gray-600">
+    Already have an account?
+    <a href="{{ url_for('login') }}" class="text-blue-600 hover:underline"
+      >Login</a
+    >
+  </p>
+</div>
+
+<!-- <script>
+// Toggle password visibility
+const togglePassword = document.querySelector("#togglePassword");
+const password = document.querySelector("#password");
+const eyeIcon = document.querySelector("#eyeIcon");
+
+togglePassword.addEventListener("click", function () {
+  const type = password.getAttribute("type") === "password" ? "text" : "password";
+  password.setAttribute("type", type);
+  eyeIcon.classList.toggle("opacity-100");
+  eyeIcon.classList.toggle("opacity-70");
+});
+
+// Toggle confirm password visibility
+const toggleConfirmPassword = document.querySelector("#toggleConfirmPassword");
+const confirmPassword = document.querySelector("#confirm_password");
+const eyeIconConfirm = document.querySelector("#eyeIconConfirm");
+
+toggleConfirmPassword.addEventListener("click", function () {
+  const type = confirmPassword.getAttribute("type") === "password" ? "text" : "password";
+  confirmPassword.setAttribute("type", type);
+  eyeIconConfirm.classList.toggle("opacity-100");
+  eyeIconConfirm.classList.toggle("opacity-70");
+});
+</script> -->
+<script>
+  // Toggle password visibility (เหมือนเดิม)
+  const togglePassword = document.querySelector("#togglePassword");
+  const password = document.querySelector("#password");
+  const eyeIcon = document.querySelector("#eyeIcon");
+
+  togglePassword.addEventListener("click", function () {
+    const type =
+      password.getAttribute("type") === "password" ? "text" : "password";
+    password.setAttribute("type", type);
+    eyeIcon.classList.toggle("opacity-100");
+    eyeIcon.classList.toggle("opacity-70");
+  });
+
+  // Toggle confirm password visibility (เหมือนเดิม)
+  const toggleConfirmPassword = document.querySelector(
+    "#toggleConfirmPassword"
+  );
+  const confirmPassword = document.querySelector("#confirm_password");
+  const eyeIconConfirm = document.querySelector("#eyeIconConfirm");
+
+  toggleConfirmPassword.addEventListener("click", function () {
+    const type =
+      confirmPassword.getAttribute("type") === "password" ? "text" : "password";
+    confirmPassword.setAttribute("type", type);
+    eyeIconConfirm.classList.toggle("opacity-100");
+    eyeIconConfirm.classList.toggle("opacity-70");
+  });
+
+  // ✅ Password validation ก่อน submit
+  const form = document.querySelector("form");
+  form.addEventListener("submit", function (e) {
+    const passwordValue = password.value;
+    const confirmPasswordValue = confirmPassword.value;
+
+    // Regex: อย่างน้อย 8 ตัว มีตัวเล็ก ตัวใหญ่ และตัวเลข
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if (!passwordRegex.test(passwordValue)) {
+      e.preventDefault();
+      alert(
+        "Password ต้องมีอย่างน้อย 8 ตัว และประกอบด้วย ตัวพิมพ์ใหญ่, พิมพ์เล็ก และตัวเลข"
+      );
+      return;
+    }
+
+    if (passwordValue !== confirmPasswordValue) {
+      e.preventDefault();
+      alert("Password และ Confirm Password ต้องตรงกัน");
+      return;
+    }
+  });
+</script>
+{% endblock %}

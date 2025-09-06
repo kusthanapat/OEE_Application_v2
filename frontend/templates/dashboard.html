@@ -1,0 +1,767 @@
+{% extends 'user_base.html' %} {% block content %}
+
+<!-- Block 1: เครื่องตัด -->
+<div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
+  <h2 class="text-xl font-bold mb-4">เครื่องตัด</h2>
+
+  <div class="grid grid-cols-4 gap-6">
+    <!--A1-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">A1</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialA1" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--A2-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">A2</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialA2" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--A3-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">A3</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialA3" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--A#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Block 2: เครื่องพิมพ์ -->
+<div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
+  <h2 class="text-xl font-bold mb-4">เครื่องพิมพ์</h2>
+
+  <div class="grid grid-cols-4 gap-6">
+    <!--B7-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">B7</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialB7" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--B8-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">B8</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialB8" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--B9-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">B9</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialB9" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--B10-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">B10</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialB10" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--B12-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">B12</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialB12" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--B13-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">B13</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialB13" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--B16-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">B16</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialB16" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--B17-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">B17</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialB17" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--B18-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">B18</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialB18" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--B#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+    <!--B#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+    <!--B#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Block 3: เครื่องปั๊ม -->
+<div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
+  <h2 class="text-xl font-bold mb-4">เครื่องปั๊ม</h2>
+
+  <div class="grid grid-cols-4 gap-6">
+    <!--C1-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C1</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC1" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--C2-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C2</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC2" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--C3-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C3</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC3" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--C4-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C4</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC4" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--C5-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C5</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC5" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--C6-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C6</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC6" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--C7-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C7</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC7" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--C8-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C8</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC8" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--C9-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C9</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC9" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
+      </div>
+    </div>
+    <!--C10-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C10</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC10" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--C11-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">C11</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialC11" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--C#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Block 4: เครื่องปะ -->
+<div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
+  <h2 class="text-xl font-bold mb-4">เครื่องปะ</h2>
+
+  <div class="grid grid-cols-4 gap-6">
+    <!--D1-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D1</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD1" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D2-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D2</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD2" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D3-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D3</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD3" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D5-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D5</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD5" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D6-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D6</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD6" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D7-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D7</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD7" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D8-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D8</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD8" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D9-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D9</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD9" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D10-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D10</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD10" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D11-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D11</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD11" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D12-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D12</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD12" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--D13-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">D13</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialD13" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 5: เครื่องคัด -->
+<div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
+  <h2 class="text-xl font-bold mb-4">เครื่องคัด</h2>
+
+  <div class="grid grid-cols-4 gap-6">
+    <!--H1-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">H1</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialH1" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--H2-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">H2</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialH2" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--H4-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">H4</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialH4" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--H5-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">H5</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialH5" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--H6-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">H6</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialH6" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--H7-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">H7</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialH7" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--H8-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">H8</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialH8" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--H9-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">H9</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialH9" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--H10-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">H10</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialH10" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--H#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+    <!--H#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+    <!--H#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Block 6: เครื่องแกะ -->
+<div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
+  <h2 class="text-xl font-bold mb-4">เครื่องตัด</h2>
+
+  <div class="grid grid-cols-4 gap-6">
+    <!--I1-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">I1</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialI1" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--I2-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">I2</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialI2" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--I4-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">I4</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialI4" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--I#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Block 7: RIGID -->
+<div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
+  <h2 class="text-xl font-bold mb-4">RIGID</h2>
+
+  <div class="grid grid-cols-4 gap-6">
+    <!--M1-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">M1</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialM1" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--N1-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N1</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialN1" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--O1-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">O1</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialO1" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--Q1-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">Q1</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialQ1" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--S1-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">S1</h2>
+      <div class="flex flex-col items-center justify-center flex-grow">
+        <div id="radialS1" class="w-full h-32"></div>
+        <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
+      </div>
+    </div>
+    <!--#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+    <!--#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+    <!--#-->
+    <div
+      class="bg-white rounded-lg p-4 shadow flex items-center justify-center h-48"
+    >
+      <h2 class="font-bold mb-2">N/A</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Script for ApexCharts -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // ฟังก์ชันสร้าง radial bar
+    function createRadialChart(id, value, color) {
+      var options = {
+        series: [value],
+        chart: {
+          height: 160,
+          type: "radialBar",
+        },
+        plotOptions: {
+          radialBar: {
+            hollow: { size: "60%" },
+            track: {
+              background: "#D1D5DB", // ✅ เทาอ่อน (gray-300)
+              strokeWidth: "100%",
+              margin: 0,
+            },
+            dataLabels: {
+              name: {
+                show: true,
+                fontSize: "12px",
+                offsetY: -10, // ปรับตำแหน่งให้สูงขึ้น
+                color: "#4b5563", // gray-500
+                formatter: function () {
+                  return "OEE"; // แสดงคำว่า OEE
+                },
+              },
+              value: {
+                fontSize: "18px",
+                fontWeight: "bold",
+                show: true,
+                offsetY: 6, // จัดให้อยู่ตรงกลาง
+                formatter: function (val) {
+                  return val + "%"; // แสดง % ต่อท้าย
+                },
+              },
+            },
+          },
+        },
+        colors: [color],
+        labels: ["Progress"],
+      };
+
+      var chart = new ApexCharts(document.querySelector(id), options);
+      chart.render();
+    }
+
+    // Chart A
+    createRadialChart("#radialA1", 75, "#2563eb");
+    createRadialChart("#radialA2", 50, "#16a34a");
+    createRadialChart("#radialA3", 90, "#dc2626");
+
+    // Chart B
+    createRadialChart("#radialB7", 65, "#9333ea");
+    createRadialChart("#radialB8", 40, "#f59e0b");
+    createRadialChart("#radialB9", 85, "#06b6d4");
+    createRadialChart("#radialB10", 85, "#06b6d4");
+    createRadialChart("#radialB12", 65, "#9333ea");
+    createRadialChart("#radialB13", 40, "#f59e0b");
+    createRadialChart("#radialB16", 85, "#06b6d4");
+    createRadialChart("#radialB17", 85, "#06b6d4");
+    createRadialChart("#radialB18", 85, "#06b6d4");
+
+    // Chart C
+    createRadialChart("#radialC1", 65, "#9333ea");
+    createRadialChart("#radialC2", 40, "#f59e0b");
+    createRadialChart("#radialC3", 85, "#06b6d4");
+    createRadialChart("#radialC4", 85, "#06b6d4");
+    createRadialChart("#radialC5", 65, "#9333ea");
+    createRadialChart("#radialC6", 40, "#f59e0b");
+    createRadialChart("#radialC7", 85, "#06b6d4");
+    createRadialChart("#radialC8", 85, "#06b6d4");
+    createRadialChart("#radialC9", 85, "#06b6d4");
+    createRadialChart("#radialC10", 75, "#06b6d4");
+    createRadialChart("#radialC11", 85, "#06b6d4");
+
+    // Chart D
+    createRadialChart("#radialD1", 65, "#9333ea");
+    createRadialChart("#radialD2", 40, "#f59e0b");
+    createRadialChart("#radialD3", 85, "#06b6d4");
+    createRadialChart("#radialD5", 65, "#9333ea");
+    createRadialChart("#radialD6", 40, "#f59e0b");
+    createRadialChart("#radialD7", 85, "#06b6d4");
+    createRadialChart("#radialD8", 85, "#06b6d4");
+    createRadialChart("#radialD9", 85, "#06b6d4");
+    createRadialChart("#radialD10", 75, "#06b6d4");
+    createRadialChart("#radialD11", 85, "#06b6d4");
+    createRadialChart("#radialD12", 85, "#06b6d4");
+    createRadialChart("#radialD13", 85, "#06b6d4");
+
+    // Chart H
+    createRadialChart("#radialH1", 65, "#9333ea");
+    createRadialChart("#radialH2", 40, "#f59e0b");
+    createRadialChart("#radialH4", 85, "#06b6d4");
+    createRadialChart("#radialH5", 65, "#9333ea");
+    createRadialChart("#radialH6", 40, "#f59e0b");
+    createRadialChart("#radialH7", 85, "#06b6d4");
+    createRadialChart("#radialH8", 85, "#06b6d4");
+    createRadialChart("#radialH9", 85, "#06b6d4");
+    createRadialChart("#radialH10", 75, "#06b6d4");
+
+    // Chart I
+    createRadialChart("#radialI1", 75, "#2563eb");
+    createRadialChart("#radialI2", 50, "#16a34a");
+    createRadialChart("#radialI4", 40, "#dc2626");
+
+    // Chart RIGID
+    createRadialChart("#radialM1", 75, "#2563eb");
+    createRadialChart("#radialN1", 50, "#16a34a");
+    createRadialChart("#radialO1", 40, "#dc2626");
+    createRadialChart("#radialQ1", 40, "#dc2626");
+    createRadialChart("#radialS1", 40, "#dc2626");
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,30 @@
+<nav class="bg-dark text-white w-full shadow-md">
+  <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+    <!-- Brand -->
+    <div class="text-xl font-bold">📊 OEE Dashboard</div>
+
+    <!-- Menu -->
+    <div class="flex space-x-6">
+      <a href="{{ url_for('home') }}" class="text-white hover:text-gray-500"
+        >Home</a
+      >
+      <a
+        href="{{ url_for('dashboard') }}"
+        class="text-white hover:text-gray-500"
+        >Dashboard</a
+      >
+      <a href="#footer" class="text-white hover:text-gray-500">Contact</a>
+    </div>
+
+    <!-- Logout -->
+    <div>
+      <a href="{{ url_for('index') }}">
+        <button
+          class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+        >
+          Logout
+        </button>
+      </a>
+    </div>
+  </div>
+</nav>
