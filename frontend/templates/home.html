@@ -17,7 +17,25 @@
     </div>
 
     <div class="bg-gray-200 rounded-lg shadow p-6 mb-8">
-      <h2 class="text-xl font-semibold text-gray-700 mb-4">OEE Overview</h2>
+      <div class="flex w-full justify-between px-4">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">OEE Dashboard</h2>
+        <div class="flex items-center space-x-24">
+          <select
+            id="select1"
+            class="border border-gray-600 rounded px-2 py-2 w-52"
+          ></select>
+          <select
+            id="select2"
+            class="border border-gray-600 rounded px-2 py-2 w-52"
+          ></select>
+          <button
+            id="bt_search"
+            class="bg-lime-600 text-white px-4 py-2 rounded hover:bg-lime-700 transition"
+          >
+            Search
+          </button>
+        </div>
+      </div>
       <div id="oeeChart"></div>
     </div>
 
@@ -31,7 +49,90 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Radial chart for OEE overview
+      // ---------- สร้างตัวเลือก ----------
+      const select1 = document.getElementById("select1");
+      const select2 = document.getElementById("select2");
+
+      const optionsMap = {
+        overview: [],
+        เครื่องตัด: ["A1", "A2", "A3"],
+        เครื่องพิพม์: [
+          "B7",
+          "B8",
+          "B9",
+          "B10",
+          "B12",
+          "B13",
+          "B16",
+          "B17",
+          "B18",
+        ],
+        เครื่องปั๊ม: [
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8",
+          "C9",
+          "C10",
+          "C11",
+        ],
+        เครื่องปะ: [
+          "D1",
+          "D2",
+          "D3",
+          "D5",
+          "D6",
+          "D7",
+          "D8",
+          "D9",
+          "D10",
+          "D11",
+          "D12",
+          "D13",
+        ],
+        เครื่องคัด: ["H1", "H2", "H4", "H5", "H6", "H7", "H8", "H9", "H10"],
+        เครื่องi: ["I1", "I2", "I4"],
+        RIGID: ["M1", "N1", "O1", "Q1", "S1"],
+      };
+
+      // ใส่ตัวเลือกใน select1
+      Object.keys(optionsMap).forEach((key) => {
+        const opt = document.createElement("option");
+        opt.value = key;
+        opt.textContent = key;
+        select1.appendChild(opt);
+      });
+
+      // เปลี่ยน select1
+      select1.addEventListener("change", function () {
+        const selected = this.value;
+        const items = optionsMap[selected];
+
+        // clear select2
+        select2.innerHTML = "";
+
+        if (items.length === 0) {
+          select2.disabled = true;
+        } else {
+          select2.disabled = false;
+          items.forEach((item) => {
+            const opt = document.createElement("option");
+            opt.value = item;
+            opt.textContent = item;
+            select2.appendChild(opt);
+          });
+        }
+      });
+
+      // ตั้งค่าเริ่มต้น
+      select1.value = "overview";
+      select2.disabled = true;
+
+      // ---------- Chart ----------
       var radialOptions = {
         chart: { type: "radialBar", height: 350 },
         series: [76],
@@ -52,7 +153,6 @@
         radialOptions
       ).render();
 
-      // Function to create A P Q charts
       function createRadialChart(id, value, color) {
         var options = {
           chart: { type: "radialBar", height: 250 },
@@ -78,12 +178,10 @@
         new ApexCharts(document.querySelector(id), options).render();
       }
 
-      // ✅ Create A, P, Q charts
       createRadialChart("#radialA", 92, "#3B82F6");
       createRadialChart("#radialP", 87, "#10B981");
       createRadialChart("#radialQ", 95, "#8B5CF6");
 
-      // Line chart
       var lineOptions = {
         chart: { type: "line", height: 350, zoom: { enabled: false } },
         series: [{ name: "OEE %", data: [78, 82, 80, 76, 79, 81, 84] }],
