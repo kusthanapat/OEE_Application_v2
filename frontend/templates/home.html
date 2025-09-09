@@ -95,7 +95,7 @@
           "D13",
         ],
         เครื่องคัด: ["H1", "H2", "H4", "H5", "H6", "H7", "H8", "H9", "H10"],
-        เครื่องi: ["I1", "I2", "I4"],
+        เครื่องแกะ: ["I1", "I2", "I4"],
         RIGID: ["M1", "N1", "O1", "Q1", "S1"],
       };
 
@@ -141,6 +141,10 @@
         plotOptions: {
           radialBar: {
             hollow: { size: "60%" },
+            track: {
+              background: "#ffffff", // สีของส่วนที่เหลือ
+              strokeWidth: "100%",
+            },
             dataLabels: {
               name: { offsetY: -10, color: "#4B5563", fontSize: "18px" },
               value: { fontSize: "28px", color: "#111827", offsetY: 10 },
@@ -160,7 +164,7 @@
           plotOptions: {
             radialBar: {
               hollow: { size: "60%" },
-              track: { background: "#E5E7EB", strokeWidth: "100%" },
+              track: { background: "#ffffff", strokeWidth: "100%" },
               dataLabels: {
                 name: { show: false },
                 value: {
