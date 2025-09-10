@@ -54,7 +54,14 @@
 
 from flask import render_template, request, redirect, url_for, session, flash
 from backend import app, bcrypt
-import mysql.connector
+
+# # for phpmysql
+# import mysql.connector
+
+# for postgreSQL
+import psycopg2
+from psycopg2 import Error, extras
+
 from backend.db_utils import create_connection, add_user
 
 
@@ -89,21 +96,46 @@ def login():
 
         connection = create_connection()
         if connection:
-            cursor = connection.cursor(dictionary=True)
-            query = "SELECT * FROM user WHERE username = %s"
-            cursor.execute(query, (username,))
-            user = cursor.fetchone()
-            cursor.close()
-            connection.close()
+            try:
+                # # syntax of phpmysql
+                # cursor = connection.cursor(dictionary=True)
+                # query = "SELECT * FROM user WHERE username = %s"
+                
+                # syntax of postgreSQL
+                cursor = connection.cursor(cursor_factory=extras.DictCursor)
+                # publish.uer is more specify user
+                query = "SELECT * FROM public.user WHERE username = %s"
+                
+                cursor.execute(query, (username,))
+                user = cursor.fetchone()
+                
+                ## not use this because use finally instead, so use finally is more good
+                # cursor.close()
+                # connection.close()
 
-            if user and bcrypt.check_password_hash(user['password'], password_input):
-                # เก็บข้อมูล user ใน session
-                session['user_id'] = user['id']
-                session['username'] = user['username']
-                flash("Login successful!", "success")
-                return redirect(url_for('home'))
-            else:
-                flash("Invalid username or password", "danger")
+                if user and bcrypt.check_password_hash(user['password'], password_input):
+                    # เก็บข้อมูล user ใน session
+                    session['user_id'] = user['id']
+                    session['username'] = user['username']
+                    flash("Login successful!", "success")
+                    return redirect(url_for('home'))
+                else:
+                    flash("Invalid username or password", "danger")
+            # Exception for check every Error
+            # except Exception as e:
+            #     flash(f"Database error: {e}", "danger")
+            
+            # Exception for check Error about database
+            except Error as e:
+                flash(f"Database error: {e}", "danger")  
+            
+            # finally for closed the door of database every time when connect database for security         
+            finally:
+                if connection:
+                    cursor.close()
+                    connection.close()
+        else:
+            flash("Unable to connect to the database.", "danger")
 
     return render_template('login.html')
 
@@ -128,6 +160,7 @@ def register():
             flash("Registration successful! Please log in.", "success")
             return redirect(url_for('login'))
         except Exception as e:
+            print("Register Error:", str(e))  # <== เพิ่มตรงนี้
             flash(f"Registration failed: {str(e)}", "danger")
 
     return render_template('register.html')
