@@ -697,9 +697,23 @@
       chart.render();
     }
 
+    createRadialChart("#radialA1", 90, "#dc2626");
     // Chart A
-    createRadialChart("#radialA1", 75, "#2563eb");
-    createRadialChart("#radialA2", 50, "#16a34a");
+    fetch("/api/oee_a2")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("DATA FROM API:", data);
+        if (data.OEE !== null) {
+          createRadialChart("#radialA2", data.OEE, "#16a34a");
+        } else {
+          createRadialChart("#radialA2", 0, "#D1D5DB");
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching OEE A2:", err);
+        createRadialChart("#radialA2", 0, "#D1D5DB");
+      });
+
     createRadialChart("#radialA3", 90, "#dc2626");
 
     // Chart B

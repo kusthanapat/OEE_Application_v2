@@ -171,3 +171,34 @@ def logout():
     session.clear()  # ล้าง session ทั้งหมด
     flash("You have been logged out.", "info")
     return redirect(url_for('index'))
+
+
+@app.route('/api/oee_a2')
+def get_latest_oee_a2():
+    connection = create_connection()
+    if not connection:
+        return {"error": "Unable to connect to the database"}, 500
+
+    try:
+        cursor = connection.cursor()
+        query = """
+            SELECT * FROM oee_a2
+            ORDER BY "Date" DESC, "Start_Time" DESC
+            LIMIT 1
+        """
+        cursor.execute(query)
+        row = cursor.fetchone()
+        cursor.close()
+        connection.close()
+
+        if row:
+            return {
+                "OEE": float(row[3]),  # ✅ ดึงค่าจาก column 'a'
+                "Date": str(row[1]),
+                "Start_Time": str(row[2])
+            }
+        else:
+            return {"OEE": None}
+    except Exception as e:
+        print("Database error:", e)
+        return {"error": str(e)}, 500
