@@ -699,18 +699,18 @@
 
     createRadialChart("#radialA1", 90, "#dc2626");
     // Chart A
-    fetch("/api/oee_a2")
+    fetch("/api/summary_availability_2")
       .then((response) => response.json())
       .then((data) => {
         console.log("DATA FROM API:", data);
-        if (data.OEE !== null) {
-          createRadialChart("#radialA2", data.OEE, "#16a34a");
+        if (data.availability_percent !== null) {
+          createRadialChart("#radialA2", data.availability_percent, "#16a34a");
         } else {
           createRadialChart("#radialA2", 0, "#D1D5DB");
         }
       })
       .catch((err) => {
-        console.error("Error fetching OEE A2:", err);
+        console.error("Error fetching A2:", err);
         createRadialChart("#radialA2", 0, "#D1D5DB");
       });
 

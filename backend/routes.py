@@ -173,8 +173,8 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/api/oee_a2')
-def get_latest_oee_a2():
+@app.route('/api/summary_availability_2')
+def get_latest_A2():
     connection = create_connection()
     if not connection:
         return {"error": "Unable to connect to the database"}, 500
@@ -182,8 +182,8 @@ def get_latest_oee_a2():
     try:
         cursor = connection.cursor()
         query = """
-            SELECT * FROM oee_a2
-            ORDER BY "Date" DESC, "Start_Time" DESC
+            SELECT * FROM summary_availability_2
+            ORDER BY "Date" DESC
             LIMIT 1
         """
         cursor.execute(query)
@@ -193,12 +193,12 @@ def get_latest_oee_a2():
 
         if row:
             return {
-                "OEE": float(row[3]),  # ✅ ดึงค่าจาก column 'a'
+                "availability_percent": float(row[4]),  # ✅ ดึงค่าจาก column 'a'
                 "Date": str(row[1]),
-                "Start_Time": str(row[2])
+                # "Start_Time": str(row[2])
             }
         else:
-            return {"OEE": None}
+            return {"availability_percent": None}
     except Exception as e:
         print("Database error:", e)
         return {"error": str(e)}, 500
