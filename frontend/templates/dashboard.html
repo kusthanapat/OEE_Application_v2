@@ -697,14 +697,28 @@
       chart.render();
     }
 
-    createRadialChart("#radialA1", 90, "#dc2626");
     // Chart A
-    fetch("/api/summary_availability_2")
+    fetch("/api/oee_a1")
       .then((response) => response.json())
       .then((data) => {
         console.log("DATA FROM API:", data);
-        if (data.availability_percent !== null) {
-          createRadialChart("#radialA2", data.availability_percent, "#16a34a");
+        if (data.OEE !== null) {
+          createRadialChart("#radialA1", data.OEE, "#16a34a");
+        } else {
+          createRadialChart("#radialA1", 0, "#D1D5DB");
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching A1:", err);
+        createRadialChart("#radialA1", 0, "#D1D5DB");
+      });
+
+    fetch("/api/oee_a2")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("DATA FROM API:", data);
+        if (data.OEE_A2 !== null) {
+          createRadialChart("#radialA2", data.OEE_A2, "#dc2626");
         } else {
           createRadialChart("#radialA2", 0, "#D1D5DB");
         }
@@ -714,13 +728,87 @@
         createRadialChart("#radialA2", 0, "#D1D5DB");
       });
 
-    createRadialChart("#radialA3", 90, "#dc2626");
+    fetch("/api/oee_a3")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("DATA FROM API:", data);
+        if (data.OEE_A3 !== null) {
+          createRadialChart("#radialA3", data.OEE_A3, "#dc2626");
+        } else {
+          createRadialChart("#radialA3", 0, "#D1D5DB");
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching A3:", err);
+        createRadialChart("#radialA3", 0, "#D1D5DB");
+      });
 
     // Chart B
-    createRadialChart("#radialB7", 65, "#9333ea");
-    createRadialChart("#radialB8", 40, "#f59e0b");
-    createRadialChart("#radialB9", 85, "#06b6d4");
-    createRadialChart("#radialB10", 85, "#06b6d4");
+    fetch("/api/oee_b7")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("DATA FROM API:", data);
+        if (data.OEE_B7 !== null) {
+          createRadialChart("#radialB7", data.OEE_B7, "#dc2626");
+        } else {
+          createRadialChart("#radialB7", 0, "#D1D5DB");
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching B7:", err);
+        createRadialChart("#radialB7", 0, "#D1D5DB");
+      });
+
+    fetch("/api/oee_b8")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("DATA FROM API:", data);
+        if (data.OEE_B8 !== null) {
+          createRadialChart("#radialB8", data.OEE_B8, "#dc2626");
+        } else {
+          createRadialChart("#radialB8", 0, "#D1D5DB");
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching B8:", err);
+        createRadialChart("#radialB8", 0, "#D1D5DB");
+      });
+
+    fetch("/api/oee_b9")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("DATA FROM API:", data);
+        if (data.OEE_B9 !== null) {
+          createRadialChart("#radialB9", data.OEE_B9, "#dc2626");
+        } else {
+          createRadialChart("#radialB9", 0, "#D1D5DB");
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching B9:", err);
+        createRadialChart("#radialB9", 0, "#D1D5DB");
+      });
+
+    fetch("/api/oee_b10")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("DATA FROM API:", data);
+        if (data.OEE_B10 !== null) {
+          createRadialChart("#radialB10", data.OEE_B10, "#dc2626");
+        } else {
+          createRadialChart("#radialB10", 0, "#D1D5DB");
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching B10:", err);
+        createRadialChart("#radialB10", 0, "#D1D5DB");
+      });
+
+    // createRadialChart("#radialB7", 65, "#9333ea");
+    // createRadialChart("#radialB8", 40, "#f59e0b");
+    // createRadialChart("#radialB9", 85, "#06b6d4");
+    // createRadialChart("#radialB10", 85, "#06b6d4");
+
     createRadialChart("#radialB12", 65, "#9333ea");
     createRadialChart("#radialB13", 40, "#f59e0b");
     createRadialChart("#radialB16", 85, "#06b6d4");

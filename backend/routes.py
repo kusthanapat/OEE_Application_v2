@@ -173,8 +173,8 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/api/summary_availability_2')
-def get_latest_A2():
+@app.route('/api/oee_a1')
+def get_latest_A1():
     connection = create_connection()
     if not connection:
         return {"error": "Unable to connect to the database"}, 500
@@ -182,8 +182,8 @@ def get_latest_A2():
     try:
         cursor = connection.cursor()
         query = """
-            SELECT * FROM summary_availability_2
-            ORDER BY "Date" DESC
+            SELECT * FROM calculate_data_a1
+            ORDER BY id DESC
             LIMIT 1
         """
         cursor.execute(query)
@@ -193,12 +193,192 @@ def get_latest_A2():
 
         if row:
             return {
-                "availability_percent": float(row[4]),  # ✅ ดึงค่าจาก column 'a'
-                "Date": str(row[1]),
+                "OEE": float(row[4]),  # ✅ ดึงค่าจาก column 'a'
+                "TimeStamp": str(row[6])
                 # "Start_Time": str(row[2])
             }
         else:
-            return {"availability_percent": None}
+            return {"OEE": None}
+    except Exception as e:
+        print("Database error:", e)
+        return {"error": str(e)}, 500
+    
+@app.route('/api/oee_a2')
+def get_latest_A2():
+    connection = create_connection()
+    if not connection:
+        return {"error": "Unable to connect to the database"}, 500
+
+    try:
+        cursor = connection.cursor()
+        query = """
+            SELECT * FROM calculate_data_a2
+            ORDER BY id DESC
+            LIMIT 1
+        """
+        cursor.execute(query)
+        row = cursor.fetchone()
+        cursor.close()
+        connection.close()
+
+        if row:
+            return {
+                "OEE_A2": float(row[4]),  # ✅ ดึงค่าจาก column 'a'
+                "TimeStamp": str(row[6])
+                # "Start_Time": str(row[2])
+            }
+        else:
+            return {"OEE_A2": None}
+    except Exception as e:
+        print("Database error:", e)
+        return {"error": str(e)}, 500
+    
+@app.route('/api/oee_a3')
+def get_latest_A3():
+    connection = create_connection()
+    if not connection:
+        return {"error": "Unable to connect to the database"}, 500
+
+    try:
+        cursor = connection.cursor()
+        query = """
+            SELECT * FROM calculate_data_a3
+            ORDER BY id DESC
+            LIMIT 1
+        """
+        cursor.execute(query)
+        row = cursor.fetchone()
+        cursor.close()
+        connection.close()
+
+        if row:
+            return {
+                "OEE_A3": float(row[4]),  # ✅ ดึงค่าจาก column 'a'
+                "TimeStamp": str(row[6])
+                # "Start_Time": str(row[2])
+            }
+        else:
+            return {"OEE_A3": None}
+    except Exception as e:
+        print("Database error:", e)
+        return {"error": str(e)}, 500
+    
+@app.route('/api/oee_b7')
+def get_latest_B7():
+    connection = create_connection()
+    if not connection:
+        return {"error": "Unable to connect to the database"}, 500
+
+    try:
+        cursor = connection.cursor()
+        query = """
+            SELECT * FROM calculate_data_b7
+            ORDER BY id DESC
+            LIMIT 1
+        """
+        cursor.execute(query)
+        row = cursor.fetchone()
+        cursor.close()
+        connection.close()
+
+        if row:
+            return {
+                "OEE_B7": float(row[4]),  # ✅ ดึงค่าจาก column 'a'
+                "TimeStamp": str(row[6])
+                # "Start_Time": str(row[2])
+            }
+        else:
+            return {"OEE_B7": None}
+    except Exception as e:
+        print("Database error:", e)
+        return {"error": str(e)}, 500
+    
+@app.route('/api/oee_b8')
+def get_latest_B8():
+    connection = create_connection()
+    if not connection:
+        return {"error": "Unable to connect to the database"}, 500
+
+    try:
+        cursor = connection.cursor()
+        query = """
+            SELECT * FROM calculate_data_b8
+            ORDER BY id DESC
+            LIMIT 1
+        """
+        cursor.execute(query)
+        row = cursor.fetchone()
+        cursor.close()
+        connection.close()
+
+        if row:
+            return {
+                "OEE_B8": float(row[4]),  # ✅ ดึงค่าจาก column 'a'
+                "TimeStamp": str(row[6])
+                # "Start_Time": str(row[2])
+            }
+        else:
+            return {"OEE_B8": None}
+    except Exception as e:
+        print("Database error:", e)
+        return {"error": str(e)}, 500
+    
+@app.route('/api/oee_b9')
+def get_latest_B9():
+    connection = create_connection()
+    if not connection:
+        return {"error": "Unable to connect to the database"}, 500
+
+    try:
+        cursor = connection.cursor()
+        query = """
+            SELECT * FROM calculate_data_b9
+            ORDER BY id DESC
+            LIMIT 1
+        """
+        cursor.execute(query)
+        row = cursor.fetchone()
+        cursor.close()
+        connection.close()
+
+        if row:
+            return {
+                "OEE_B9": float(row[4]),  # ✅ ดึงค่าจาก column 'a'
+                "TimeStamp": str(row[6])
+                # "Start_Time": str(row[2])
+            }
+        else:
+            return {"OEE_B9": None}
+    except Exception as e:
+        print("Database error:", e)
+        return {"error": str(e)}, 500
+    
+@app.route('/api/oee_b10')
+def get_latest_B10():
+    connection = create_connection()
+    if not connection:
+        return {"error": "Unable to connect to the database"}, 500
+
+    try:
+        cursor = connection.cursor()
+        query = """
+            SELECT * FROM calculate_data_b10
+            ORDER BY id DESC
+            LIMIT 1
+        """
+        cursor.execute(query)
+        row = cursor.fetchone()
+        cursor.close()
+        connection.close()
+
+        if row:
+            return {
+                "OEE_B10": float(row[4]),  # ✅ ดึงค่าจาก column 'a'
+                "TimeStamp": str(row[6])
+                # "Start_Time": str(row[2])
+            }
+        else:
+            return {"OEE_B10": None}
     except Exception as e:
         print("Database error:", e)
         return {"error": str(e)}, 500
