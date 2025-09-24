@@ -27,8 +27,9 @@ def create_connection():
             database='mydatabase'
         )
         
-        if connection.is_connected():
-            return connection
+        # if connection.is_connected():
+        #     return connection
+        return connection
             
     except Error as e:
         print(f"Error: {e}")
