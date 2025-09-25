@@ -29,7 +29,7 @@
             class="border border-gray-600 rounded px-2 py-2 w-52"
           ></select>
           <button
-            id="bt_search"
+            id="searchBtn"
             class="bg-lime-600 text-white px-4 py-2 rounded hover:bg-lime-700 transition"
           >
             Search
@@ -47,7 +47,467 @@
     </div>
   </div>
 
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const select1 = document.getElementById("select1");
+      const select2 = document.getElementById("select2");
+      const searchBtn = document.getElementById("searchBtn");
+
+      const optionsMap = {
+        overview: [],
+        เครื่องตัด: ["A1", "A2", "A3"],
+        เครื่องพิพม์: [
+          "B7",
+          "B8",
+          "B9",
+          "B10",
+          "B12",
+          "B13",
+          "B16",
+          "B17",
+          "B18",
+        ],
+        เครื่องปั๊ม: [
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8",
+          "C9",
+          "C10",
+          "C11",
+        ],
+        เครื่องปะ: [
+          "D1",
+          "D2",
+          "D3",
+          "D5",
+          "D6",
+          "D7",
+          "D8",
+          "D9",
+          "D10",
+          "D11",
+          "D12",
+          "D13",
+        ],
+        เครื่องคัด: ["H1", "H2", "H4", "H5", "H6", "H7", "H8", "H9", "H10"],
+        เครื่องแกะ: ["I1", "I2", "I4"],
+        RIGID: ["M1", "N1", "O1", "Q1", "S1"],
+      };
+
+      Object.keys(optionsMap).forEach((key) => {
+        const opt = document.createElement("option");
+        opt.value = key;
+        opt.textContent = key;
+        select1.appendChild(opt);
+      });
+
+      select1.addEventListener("change", function () {
+        const selected = this.value;
+        const items = optionsMap[selected];
+        select2.innerHTML = "";
+
+        if (items.length === 0) {
+          select2.disabled = true;
+        } else {
+          select2.disabled = false;
+          const defaultOpt = document.createElement("option");
+          defaultOpt.value = "";
+          defaultOpt.textContent = "-- เลือกทั้งหมด --";
+          select2.appendChild(defaultOpt);
+
+          items.forEach((item) => {
+            const opt = document.createElement("option");
+            opt.value = item;
+            opt.textContent = item;
+            select2.appendChild(opt);
+          });
+        }
+      });
+
+      searchBtn.addEventListener("click", function () {
+        const selected1 = select1.value;
+        const selected2 =
+          select2.disabled || !select2.value ? null : select2.value;
+        updateCharts(selected1, selected2);
+      });
+
+      // ---------- Chart variables ----------
+      let oeeChart, radialA, radialP, radialQ;
+
+      // ✅ ฟังก์ชันกำหนดสีตามค่า
+      function getColor(value) {
+        if (value >= 80) return "#0ea5e9"; // sky blue
+        else if (value >= 60) return "#22c55e"; // green
+        else if (value >= 40) return "#f97316"; // orange
+        else return "#dc2626"; // red
+      }
+
+      function renderRadial(id, value, color) {
+        const options = {
+          chart: { type: "radialBar", height: 250 },
+          series: [value],
+          plotOptions: {
+            radialBar: {
+              hollow: { size: "60%" },
+              track: { background: "#ffffff", strokeWidth: "100%" },
+              dataLabels: {
+                name: { show: false },
+                value: {
+                  fontSize: "22px",
+                  fontWeight: "bold",
+                  color: "#111827",
+                  offsetY: 6,
+                  formatter: (val) => val.toFixed(2) + "%",
+                },
+              },
+            },
+          },
+          colors: [color],
+        };
+        return new ApexCharts(document.querySelector(id), options);
+      }
+
+      async function updateRadial(chartObj, id, value) {
+        if (chartObj && typeof chartObj.destroy === "function") {
+          chartObj.destroy();
+        }
+        const color = getColor(value);
+        const newChart = renderRadial(id, value, color);
+        await newChart.render();
+        return newChart;
+      }
+
+      async function fetchOEE(lineId) {
+        const res = await fetch(`/api/oee_${lineId.toLowerCase()}`);
+        return await res.json();
+      }
+
+      async function updateCharts(group, line) {
+        let dataList = [];
+
+        if (group === "overview") {
+          const allKeys = Object.keys(optionsMap)
+            .filter((g) => g !== "overview")
+            .flatMap((g) => optionsMap[g]);
+          dataList = await Promise.all(allKeys.map((id) => fetchOEE(id)));
+        } else if (line) {
+          dataList = [await fetchOEE(line)];
+        } else {
+          const items = optionsMap[group] || [];
+          dataList = await Promise.all(items.map((id) => fetchOEE(id)));
+        }
+
+        const validData = dataList.filter((d) => d && d.OEE !== null);
+
+        function average(values) {
+          const valid = values.filter(
+            (v) => typeof v === "number" && !isNaN(v)
+          );
+          if (valid.length === 0) return 0;
+          return valid.reduce((a, b) => a + b, 0) / valid.length;
+        }
+
+        const OEE = average(validData.map((d) => d.OEE));
+        const A = average(validData.map((d) => d.A));
+        const P = average(validData.map((d) => d.P));
+        const Q = average(validData.map((d) => d.Q));
+
+        oeeChart = await updateRadial(oeeChart, "#oeeChart", OEE);
+        radialA = await updateRadial(radialA, "#radialA", A);
+        radialP = await updateRadial(radialP, "#radialP", P);
+        radialQ = await updateRadial(radialQ, "#radialQ", Q);
+      }
+
+      select1.value = "overview";
+      select2.disabled = true;
+      updateCharts("overview", null);
+    });
+  </script> -->
+
   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const select1 = document.getElementById("select1");
+      const select2 = document.getElementById("select2");
+      const searchBtn = document.getElementById("searchBtn");
+      const lineChartContainer = document.querySelector("#oeeLineChart");
+
+      const optionsMap = {
+        overview: [],
+        เครื่องตัด: ["A1", "A2", "A3"],
+        เครื่องพิพม์: [
+          "B7",
+          "B8",
+          "B9",
+          "B10",
+          "B12",
+          "B13",
+          "B16",
+          "B17",
+          "B18",
+        ],
+        เครื่องปั๊ม: [
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8",
+          "C9",
+          "C10",
+          "C11",
+        ],
+        เครื่องปะ: [
+          "D1",
+          "D2",
+          "D3",
+          "D5",
+          "D6",
+          "D7",
+          "D8",
+          "D9",
+          "D10",
+          "D11",
+          "D12",
+          "D13",
+        ],
+        เครื่องคัด: ["H1", "H2", "H4", "H5", "H6", "H7", "H8", "H9", "H10"],
+        เครื่องแกะ: ["I1", "I2", "I4"],
+        RIGID: ["M1", "N1", "O1", "Q1", "S1"],
+      };
+
+      Object.keys(optionsMap).forEach((key) => {
+        const opt = document.createElement("option");
+        opt.value = key;
+        opt.textContent = key;
+        select1.appendChild(opt);
+      });
+
+      select1.addEventListener("change", function () {
+        const selected = this.value;
+        const items = optionsMap[selected];
+        select2.innerHTML = "";
+
+        if (items.length === 0) {
+          select2.disabled = true;
+        } else {
+          select2.disabled = false;
+          const defaultOpt = document.createElement("option");
+          defaultOpt.value = "";
+          defaultOpt.textContent = "-- เลือกทั้งหมด --";
+          select2.appendChild(defaultOpt);
+
+          items.forEach((item) => {
+            const opt = document.createElement("option");
+            opt.value = item;
+            opt.textContent = item;
+            select2.appendChild(opt);
+          });
+        }
+      });
+
+      searchBtn.addEventListener("click", function () {
+        const selected1 = select1.value;
+        const selected2 =
+          select2.disabled || !select2.value ? null : select2.value;
+        updateCharts(selected1, selected2);
+      });
+
+      let oeeChart, radialA, radialP, radialQ;
+
+      function getColor(value) {
+        if (value >= 80) return "#0ea5e9";
+        else if (value >= 60) return "#22c55e";
+        else if (value >= 40) return "#f97316";
+        else return "#dc2626";
+      }
+
+      function renderRadial(id, value, color) {
+        const options = {
+          chart: { type: "radialBar", height: 250 },
+          series: [value],
+          plotOptions: {
+            radialBar: {
+              hollow: { size: "60%" },
+              track: { background: "#ffffff", strokeWidth: "100%" },
+              dataLabels: {
+                name: { show: false },
+                value: {
+                  fontSize: "22px",
+                  fontWeight: "bold",
+                  color: "#111827",
+                  offsetY: 6,
+                  formatter: (val) => val.toFixed(2) + "%",
+                },
+              },
+            },
+          },
+          colors: [color],
+        };
+        return new ApexCharts(document.querySelector(id), options);
+      }
+
+      async function updateRadial(chartObj, id, value) {
+        if (chartObj && typeof chartObj.destroy === "function") {
+          chartObj.destroy();
+        }
+        const color = getColor(value);
+        const newChart = renderRadial(id, value, color);
+        await newChart.render();
+        return newChart;
+      }
+
+      async function fetchOEE(lineId) {
+        const res = await fetch(`/api/oee_${lineId.toLowerCase()}`);
+        return await res.json();
+      }
+
+      async function fetchTrendData(lineId) {
+        try {
+          const res = await fetch(`/api/oee_trend/${lineId.toLowerCase()}`);
+          if (!res.ok) {
+            console.warn(`❌ API failed for ${lineId}: ${res.status}`);
+            return [];
+          }
+          const data = await res.json();
+          return Array.isArray(data) ? data : [];
+        } catch (err) {
+          console.error(`❌ Fetch error for ${lineId}:`, err);
+          return [];
+        }
+      }
+
+      async function updateCharts(group, line) {
+        try {
+          let lineIds = [];
+
+          if (group === "overview") {
+            lineIds = Object.keys(optionsMap)
+              .filter((g) => g !== "overview")
+              .flatMap((g) => optionsMap[g]);
+          } else if (line) {
+            lineIds = [line];
+          } else {
+            lineIds = optionsMap[group] || [];
+          }
+
+          // --- Radial Chart ---
+          const dataList = await Promise.all(lineIds.map((id) => fetchOEE(id)));
+          const validData = dataList.filter((d) => d && d.OEE !== null);
+
+          function average(values) {
+            const valid = values.filter(
+              (v) => typeof v === "number" && !isNaN(v)
+            );
+            if (valid.length === 0) return 0;
+            return valid.reduce((a, b) => a + b, 0) / valid.length;
+          }
+
+          const OEE = average(validData.map((d) => d.OEE));
+          const A = average(validData.map((d) => d.A));
+          const P = average(validData.map((d) => d.P));
+          const Q = average(validData.map((d) => d.Q));
+
+          oeeChart = await updateRadial(oeeChart, "#oeeChart", OEE);
+          radialA = await updateRadial(radialA, "#radialA", A);
+          radialP = await updateRadial(radialP, "#radialP", P);
+          radialQ = await updateRadial(radialQ, "#radialQ", Q);
+
+          // --- Line Chart ---
+          const trendDataList = await Promise.all(
+            lineIds.map((id) => fetchTrendData(id))
+          );
+
+          const mergedByDate = {};
+
+          trendDataList.forEach((dataList) => {
+            if (!Array.isArray(dataList)) return;
+
+            dataList.forEach(({ TimeStamp, OEE }) => {
+              if (!TimeStamp || typeof OEE !== "number" || isNaN(OEE)) return;
+              const date = TimeStamp.split(" ")[0];
+              if (!mergedByDate[date]) mergedByDate[date] = [];
+              mergedByDate[date].push(OEE);
+            });
+          });
+
+          const sortedDates = Object.keys(mergedByDate).sort();
+          const averageOEE = sortedDates.map((date) => {
+            const values = mergedByDate[date];
+            const avg =
+              values.reduce((sum, val) => sum + val, 0) / values.length;
+            return parseFloat(avg.toFixed(2));
+          });
+
+          if (sortedDates.length === 0) {
+            lineChartContainer.innerHTML = `<p class="text-gray-500">ไม่มีข้อมูลย้อนหลัง 7 วัน</p>`;
+            return;
+          }
+
+          const lineOptions = {
+            chart: {
+              type: "line",
+              height: 300,
+              toolbar: { show: false },
+            },
+            series: [
+              {
+                name: "OEE",
+                data: averageOEE,
+              },
+            ],
+            xaxis: {
+              categories: sortedDates,
+              title: { text: "วันที่", style: { fontWeight: 600 } },
+            },
+            yaxis: {
+              min: 0,
+              max: 100,
+              title: { text: "เปอร์เซ็นต์ (%)", style: { fontWeight: 600 } },
+            },
+            colors: ["#0ea5e9"],
+            stroke: {
+              curve: "smooth",
+              width: 3,
+            },
+            markers: {
+              size: 4,
+              colors: ["#0ea5e9"],
+              strokeColors: "#fff",
+              strokeWidth: 2,
+              hover: { size: 6 },
+            },
+            dataLabels: {
+              enabled: true,
+              formatter: (val) => `${val.toFixed(1)}%`,
+            },
+          };
+
+          lineChartContainer.innerHTML = "";
+          const chart = new ApexCharts(lineChartContainer, lineOptions);
+          chart.render();
+        } catch (err) {
+          console.error("❌ Error in updateCharts:", err);
+          lineChartContainer.innerHTML =
+            "<p class='text-red-500'>เกิดข้อผิดพลาดในการโหลดข้อมูล</p>";
+        }
+      }
+
+      // --- เริ่มต้นโหลด ---
+      select1.value = "overview";
+      select2.disabled = true;
+      updateCharts("overview", null);
+    });
+  </script>
+</div>
+{% endblock %}
+<!-- <script>
     document.addEventListener("DOMContentLoaded", function () {
       // ---------- สร้างตัวเลือก ----------
       const select1 = document.getElementById("select1");
@@ -202,6 +662,4 @@
         lineOptions
       ).render();
     });
-  </script>
-</div>
-{% endblock %}
+  </script> -->

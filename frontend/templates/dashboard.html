@@ -697,16 +697,88 @@
       chart.render();
     }
 
-    const lines = ["a1", "a2", "a3", "b7", "b8", "b9", "b10", "b12", "b13", "b16", "b17", "b18", "c1", "c2", "c3", "c4", "c5", 
-                  "c6", "c7", "c8", "c9", "c10", "c11", "d1", "d2", "d3", "d5", "d6", "d7", "d8", "d9", "d10", "d11","d12", "d13",
-                   "h1", "h2", "h4", "h5", "h6", "h7", "h8", "h9", "h10", "i1", "i2", "i4", "m1", "n1", "o1", "q1", "s1"];
+    const lines = [
+      "a1",
+      "a2",
+      "a3",
+      "b7",
+      "b8",
+      "b9",
+      "b10",
+      "b12",
+      "b13",
+      "b16",
+      "b17",
+      "b18",
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c8",
+      "c9",
+      "c10",
+      "c11",
+      "d1",
+      "d2",
+      "d3",
+      "d5",
+      "d6",
+      "d7",
+      "d8",
+      "d9",
+      "d10",
+      "d11",
+      "d12",
+      "d13",
+      "h1",
+      "h2",
+      "h4",
+      "h5",
+      "h6",
+      "h7",
+      "h8",
+      "h9",
+      "h10",
+      "i1",
+      "i2",
+      "i4",
+      "m1",
+      "n1",
+      "o1",
+      "q1",
+      "s1",
+    ];
+
+    // lines.forEach((line) => {
+    //   fetch(`/api/oee_${line}`)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       const value = data.OEE ?? 0;
+    //       const color = value !== 0 ? "#dc2626" : "#D1D5DB";
+    //       createRadialChart(`#radial${line.toUpperCase()}`, value, color);
+    //     })
+    //     .catch((err) => {
+    //       console.error(`Error fetching ${line}:`, err);
+    //       createRadialChart(`#radial${line.toUpperCase()}`, 0, "#D1D5DB");
+    //     });
+    // });
 
     lines.forEach((line) => {
       fetch(`/api/oee_${line}`)
         .then((res) => res.json())
         .then((data) => {
           const value = data.OEE ?? 0;
-          const color = value !== 0 ? "#dc2626" : "#D1D5DB";
+
+          // 🌈 เลือกสีตามช่วงของค่า OEE
+          let color = "#D1D5DB"; // default (gray)
+          if (value >= 80) color = "#0ea5e9"; // sky blue
+          else if (value >= 60) color = "#22c55e"; // green
+          else if (value >= 40) color = "#f97316"; // orange
+          else color = "#dc2626"; // red
+
           createRadialChart(`#radial${line.toUpperCase()}`, value, color);
         })
         .catch((err) => {
@@ -714,413 +786,6 @@
           createRadialChart(`#radial${line.toUpperCase()}`, 0, "#D1D5DB");
         });
     });
-
-    // // Chart A
-    // fetch("/api/oee_a1")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE !== null) {
-    //       createRadialChart("#radialA1", data.OEE, "#16a34a");
-    //     } else {
-    //       createRadialChart("#radialA1", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching A1:", err);
-    //     createRadialChart("#radialA1", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_a2")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_A2 !== null) {
-    //       createRadialChart("#radialA2", data.OEE_A2, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialA2", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching A2:", err);
-    //     createRadialChart("#radialA2", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_a3")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_A3 !== null) {
-    //       createRadialChart("#radialA3", data.OEE_A3, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialA3", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching A3:", err);
-    //     createRadialChart("#radialA3", 0, "#D1D5DB");
-    //   });
-
-    // // Chart B
-    // fetch("/api/oee_b7")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_B7 !== null) {
-    //       createRadialChart("#radialB7", data.OEE_B7, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialB7", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching B7:", err);
-    //     createRadialChart("#radialB7", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_b8")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_B8 !== null) {
-    //       createRadialChart("#radialB8", data.OEE_B8, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialB8", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching B8:", err);
-    //     createRadialChart("#radialB8", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_b9")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_B9 !== null) {
-    //       createRadialChart("#radialB9", data.OEE_B9, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialB9", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching B9:", err);
-    //     createRadialChart("#radialB9", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_b10")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_B10 !== null) {
-    //       createRadialChart("#radialB10", data.OEE_B10, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialB10", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching B10:", err);
-    //     createRadialChart("#radialB10", 0, "#D1D5DB");
-    //   });
-
-    // // createRadialChart("#radialB7", 65, "#9333ea");
-    // // createRadialChart("#radialB8", 40, "#f59e0b");
-    // // createRadialChart("#radialB9", 85, "#06b6d4");
-    // // createRadialChart("#radialB10", 85, "#06b6d4");
-
-    // // createRadialChart("#radialB12", 65, "#9333ea");
-    // // createRadialChart("#radialB13", 40, "#f59e0b");
-    // // createRadialChart("#radialB16", 85, "#06b6d4");
-    // // createRadialChart("#radialB17", 85, "#06b6d4");
-    // // createRadialChart("#radialB18", 85, "#06b6d4");
-
-    // fetch("/api/oee_b12")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_B12 !== null) {
-    //       createRadialChart("#radialB12", data.OEE_B12, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialB12", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching B12:", err);
-    //     createRadialChart("#radialB12", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_b13")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_B13 !== null) {
-    //       createRadialChart("#radialB13", data.OEE_B13, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialB13", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching B13:", err);
-    //     createRadialChart("#radialB13", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_b16")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_B16 !== null) {
-    //       createRadialChart("#radialB16", data.OEE_B16, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialB16", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching B16:", err);
-    //     createRadialChart("#radialB16", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_b17")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_B17 !== null) {
-    //       createRadialChart("#radialB17", data.OEE_B17, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialB17", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching B17:", err);
-    //     createRadialChart("#radialB17", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_b18")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_B18 !== null) {
-    //       createRadialChart("#radialB18", data.OEE_B18, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialB18", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching B18:", err);
-    //     createRadialChart("#radialB18", 0, "#D1D5DB");
-    //   });
-
-    // // Chart C
-    // // createRadialChart("#radialC1", 65, "#9333ea");
-    // // createRadialChart("#radialC2", 40, "#f59e0b");
-    // // createRadialChart("#radialC3", 85, "#06b6d4");
-    // // createRadialChart("#radialC4", 85, "#06b6d4");
-    // // createRadialChart("#radialC5", 65, "#9333ea");
-    // // createRadialChart("#radialC6", 40, "#f59e0b");
-    // // createRadialChart("#radialC7", 85, "#06b6d4");
-    // // createRadialChart("#radialC8", 85, "#06b6d4");
-    // // createRadialChart("#radialC9", 85, "#06b6d4");
-    // // createRadialChart("#radialC10", 75, "#06b6d4");
-    // // createRadialChart("#radialC11", 85, "#06b6d4");
-
-    // fetch("/api/oee_c1")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C1 !== null) {
-    //       createRadialChart("#radialC1", data.OEE_C1, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC1", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C1:", err);
-    //     createRadialChart("#radialC1", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_c2")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C2 !== null) {
-    //       createRadialChart("#radialC2", data.OEE_C2, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC2", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C2:", err);
-    //     createRadialChart("#radialC2", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_c3")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C3 !== null) {
-    //       createRadialChart("#radialC3", data.OEE_C3, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC3", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C3:", err);
-    //     createRadialChart("#radialC3", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_c4")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C4 !== null) {
-    //       createRadialChart("#radialC4", data.OEE_C4, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC4", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C4:", err);
-    //     createRadialChart("#radialC4", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_c5")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C5 !== null) {
-    //       createRadialChart("#radialC5", data.OEE_C5, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC5", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C5:", err);
-    //     createRadialChart("#radialC5", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_c6")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C6 !== null) {
-    //       createRadialChart("#radialC6", data.OEE_C6, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC6", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C6:", err);
-    //     createRadialChart("#radialC6", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_c7")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C7 !== null) {
-    //       createRadialChart("#radialC7", data.OEE_C7, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC7", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C7:", err);
-    //     createRadialChart("#radialC7", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_c8")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C8 !== null) {
-    //       createRadialChart("#radialC8", data.OEE_C8, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC8", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C8:", err);
-    //     createRadialChart("#radialC8", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_c9")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C9 !== null) {
-    //       createRadialChart("#radialC9", data.OEE_C9, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC9", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C9:", err);
-    //     createRadialChart("#radialC9", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_c10")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C10 !== null) {
-    //       createRadialChart("#radialC10", data.OEE_C10, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC10", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C10:", err);
-    //     createRadialChart("#radialC10", 0, "#D1D5DB");
-    //   });
-
-    // fetch("/api/oee_c11")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("DATA FROM API:", data);
-    //     if (data.OEE_C11 !== null) {
-    //       createRadialChart("#radialC11", data.OEE_C11, "#dc2626");
-    //     } else {
-    //       createRadialChart("#radialC11", 0, "#D1D5DB");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error("Error fetching C11:", err);
-    //     createRadialChart("#radialC11", 0, "#D1D5DB");
-    //   });
-    // Chart D
-    // createRadialChart("#radialD1", 65, "#9333ea");
-    // createRadialChart("#radialD2", 40, "#f59e0b");
-    // createRadialChart("#radialD3", 85, "#06b6d4");
-    // createRadialChart("#radialD5", 65, "#9333ea");
-    // createRadialChart("#radialD6", 40, "#f59e0b");
-    // createRadialChart("#radialD7", 85, "#06b6d4");
-    // createRadialChart("#radialD8", 85, "#06b6d4");
-    // createRadialChart("#radialD9", 85, "#06b6d4");
-    // createRadialChart("#radialD10", 75, "#06b6d4");
-    // createRadialChart("#radialD11", 85, "#06b6d4");
-    // createRadialChart("#radialD12", 85, "#06b6d4");
-    // createRadialChart("#radialD13", 85, "#06b6d4");
-
-    // Chart H
-    // createRadialChart("#radialH1", 65, "#9333ea");
-    // createRadialChart("#radialH2", 40, "#f59e0b");
-    // createRadialChart("#radialH4", 85, "#06b6d4");
-    // createRadialChart("#radialH5", 65, "#9333ea");
-    // createRadialChart("#radialH6", 40, "#f59e0b");
-    // createRadialChart("#radialH7", 85, "#06b6d4");
-    // createRadialChart("#radialH8", 85, "#06b6d4");
-    // createRadialChart("#radialH9", 85, "#06b6d4");
-    // createRadialChart("#radialH10", 75, "#06b6d4");
-
-    // // Chart I
-    // createRadialChart("#radialI1", 75, "#2563eb");
-    // createRadialChart("#radialI2", 50, "#16a34a");
-    // createRadialChart("#radialI4", 40, "#dc2626");
-
-    // // Chart RIGID
-    // createRadialChart("#radialM1", 75, "#2563eb");
-    // createRadialChart("#radialN1", 50, "#16a34a");
-    // createRadialChart("#radialO1", 40, "#dc2626");
-    // createRadialChart("#radialQ1", 40, "#dc2626");
-    // createRadialChart("#radialS1", 40, "#dc2626");
   });
 </script>
 {% endblock %}
