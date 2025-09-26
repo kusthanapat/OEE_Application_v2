@@ -2,10 +2,18 @@
 
 <!-- Block 1: เครื่องตัด -->
 <div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
-  <h2 class="text-xl font-bold mb-4">เครื่องตัด</h2>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-bold">เครื่องตัด</h2>
+    <button
+      class="toggle-btn bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded transition"
+      data-target="cutting"
+    >
+      แสดง/ซ่อน
+    </button>
+  </div>
 
-  <div class="grid grid-cols-4 gap-6">
-    <!--A1-->
+  <div data-toggle="cutting" class="toggle-content grid grid-cols-4 gap-6">
+    <!-- A1 -->
     <div
       class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto"
     >
@@ -15,7 +23,8 @@
         <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
       </div>
     </div>
-    <!--A2-->
+
+    <!-- A2 -->
     <div
       class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto"
     >
@@ -25,7 +34,8 @@
         <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
       </div>
     </div>
-    <!--A3-->
+
+    <!-- A3 -->
     <div
       class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto"
     >
@@ -35,20 +45,22 @@
         <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
       </div>
     </div>
-    <!--A#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
   </div>
 </div>
 
 <!-- Block 2: เครื่องพิมพ์ -->
 <div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
-  <h2 class="text-xl font-bold mb-4">เครื่องพิมพ์</h2>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-bold">เครื่องพิมพ์</h2>
+    <button
+      class="toggle-btn bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded transition"
+      data-target="printing"
+    >
+      แสดง/ซ่อน
+    </button>
+  </div>
 
-  <div class="grid grid-cols-4 gap-6">
+  <div data-toggle="printing" class="toggle-content grid grid-cols-4 gap-6">
     <!--B7-->
     <div
       class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto"
@@ -139,32 +151,22 @@
         <h6 class="font-bold mb-2 text-gray-400">WG1</h6>
       </div>
     </div>
-    <!--B#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
-    <!--B#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
-    <!--B#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
   </div>
 </div>
 
 <!-- Block 3: เครื่องปั๊ม -->
 <div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
-  <h2 class="text-xl font-bold mb-4">เครื่องปั๊ม</h2>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-bold">เครื่องปั๊ม</h2>
+    <button
+      class="toggle-btn bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded transition"
+      data-target="stamping"
+    >
+      แสดง/ซ่อน
+    </button>
+  </div>
 
-  <div class="grid grid-cols-4 gap-6">
+  <div data-toggle="stamping" class="toggle-content grid grid-cols-4 gap-6">
     <!--C1-->
     <div
       class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto"
@@ -275,20 +277,22 @@
         <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
       </div>
     </div>
-    <!--C#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
   </div>
 </div>
 
 <!-- Block 4: เครื่องปะ -->
 <div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
-  <h2 class="text-xl font-bold mb-4">เครื่องปะ</h2>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-bold">เครื่องปะ</h2>
+    <button
+      class="toggle-btn bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded transition"
+      data-target="patching"
+    >
+      แสดง/ซ่อน
+    </button>
+  </div>
 
-  <div class="grid grid-cols-4 gap-6">
+  <div data-toggle="patching" class="toggle-content grid grid-cols-4 gap-6">
     <!--D1-->
     <div
       class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto"
@@ -414,9 +418,17 @@
 
 <!-- Block 5: เครื่องคัด -->
 <div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
-  <h2 class="text-xl font-bold mb-4">เครื่องคัด</h2>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-bold">เครื่องคัด</h2>
+    <button
+      class="toggle-btn bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded transition"
+      data-target="selecting"
+    >
+      แสดง/ซ่อน
+    </button>
+  </div>
 
-  <div class="grid grid-cols-4 gap-6">
+  <div data-toggle="selecting" class="toggle-content grid grid-cols-4 gap-6">
     <!--H1-->
     <div
       class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto"
@@ -507,32 +519,22 @@
         <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
       </div>
     </div>
-    <!--H#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
-    <!--H#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
-    <!--H#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
   </div>
 </div>
 
 <!-- Block 6: เครื่องแกะ -->
 <div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
-  <h2 class="text-xl font-bold mb-4">เครื่องแกะ</h2>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-bold">เครื่องแกะ</h2>
+    <button
+      class="toggle-btn bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded transition"
+      data-target="prying"
+    >
+      แสดง/ซ่อน
+    </button>
+  </div>
 
-  <div class="grid grid-cols-4 gap-6">
+  <div data-toggle="prying" class="toggle-content grid grid-cols-4 gap-6">
     <!--I1-->
     <div
       class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto"
@@ -563,20 +565,22 @@
         <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
       </div>
     </div>
-    <!--I#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
   </div>
 </div>
 
 <!-- Block 7: RIGID -->
 <div class="bg-gray-200 rounded-lg p-6 shadow mb-8">
-  <h2 class="text-xl font-bold mb-4">RIGID</h2>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-bold">เครื่อง RIGID</h2>
+    <button
+      class="toggle-btn bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded transition"
+      data-target="rigid"
+    >
+      แสดง/ซ่อน
+    </button>
+  </div>
 
-  <div class="grid grid-cols-4 gap-6">
+  <div data-toggle="rigid" class="toggle-content grid grid-cols-4 gap-6">
     <!--M1-->
     <div
       class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto"
@@ -627,24 +631,6 @@
         <h6 class="font-bold mb-2 text-gray-400">WG2</h6>
       </div>
     </div>
-    <!--#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
-    <!--#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
-    <!--#-->
-    <!-- <div
-      class="bg-white rounded-lg p-2 sm:p-4 lg:p-6 shadow flex flex-col items-center h-auto justify-center"
-    >
-      <h2 class="font-bold mb-2">N/A</h2>
-    </div> -->
   </div>
 </div>
 
@@ -752,27 +738,13 @@
       "s1",
     ];
 
-    // lines.forEach((line) => {
-    //   fetch(`/api/oee_${line}`)
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       const value = data.OEE ?? 0;
-    //       const color = value !== 0 ? "#dc2626" : "#D1D5DB";
-    //       createRadialChart(`#radial${line.toUpperCase()}`, value, color);
-    //     })
-    //     .catch((err) => {
-    //       console.error(`Error fetching ${line}:`, err);
-    //       createRadialChart(`#radial${line.toUpperCase()}`, 0, "#D1D5DB");
-    //     });
-    // });
-
     lines.forEach((line) => {
       fetch(`/api/oee_${line}`)
         .then((res) => res.json())
         .then((data) => {
           const value = data.OEE ?? 0;
 
-          // 🌈 เลือกสีตามช่วงของค่า OEE
+          // เลือกสีตามช่วงของค่า OEE
           let color = "#D1D5DB"; // default (gray)
           if (value >= 80) color = "#0ea5e9"; // sky blue
           else if (value >= 60) color = "#22c55e"; // green
@@ -788,4 +760,23 @@
     });
   });
 </script>
+
+<!-- JavaScript toggle -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleButtons = document.querySelectorAll(".toggle-btn");
+
+    toggleButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const target = button.getAttribute("data-target");
+        const content = document.querySelector(`[data-toggle="${target}"]`);
+
+        if (content) {
+          content.classList.toggle("hidden");
+        }
+      });
+    });
+  });
+</script>
+
 {% endblock %}

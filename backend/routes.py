@@ -64,6 +64,7 @@ from flask import jsonify
 import math
 from datetime import datetime, timedelta
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -278,61 +279,46 @@ def get_latest_oee(line_id):
         return {"error": str(e)}, 500
 
 
-
-
-
 @app.route("/api/oee_trend/<line_id>")
 def get_oee_trend(line_id):
-    import math  # เพิ่มไว้บนสุดถ้ายังไม่ import
-    from flask import jsonify
-    from datetime import datetime, timedelta
-
     table_name = line_table_mapping.get(line_id.lower())
     if not table_name:
-        return jsonify([])  # ✅ ตอบ array ว่างไปเลย
+        return jsonify([])  # line_id ไม่ถูกต้อง
 
     connection = create_connection()
     if not connection:
-        return jsonify([])  # ✅ ตอบ array ว่างไปเลย
+        return jsonify([])  # เชื่อมต่อฐานข้อมูลไม่สำเร็จ
 
     try:
         cursor = connection.cursor()
-        seven_days_ago = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+        # ✅ Query ข้อมูลทั้งหมดโดยเรียงตาม TimeStamp
         query = f"""
-            SELECT A, Q, P, OEE, timestamp
+            SELECT "OEE", "TimeStamp"
             FROM {table_name}
-            WHERE DATE(timestamp) >= '{seven_days_ago}'
-            ORDER BY timestamp ASC
-            LIMIT 7
+            ORDER BY "TimeStamp" ASC
         """
         cursor.execute(query)
         rows = cursor.fetchall()
-        connection.close()
 
         result = []
         for row in rows:
-            try:
-                a, q, p, oee, timestamp = row
-                a = float(a)
-                q = float(q)
-                p = float(p)
-                oee = float(oee)
-                if timestamp is None or any(map(math.isnan, [a, q, p, oee])):
-                    continue
+            oee, timestamp = row
+            if oee is not None and timestamp:
                 result.append({
-                    "A": a,
-                    "Q": q,
-                    "P": p,
-                    "OEE": oee,
+                    "OEE": float(oee),
                     "TimeStamp": str(timestamp)
                 })
-            except:
-                continue
 
         return jsonify(result)
+
     except Exception as e:
         print(f"[ERROR] get_oee_trend: {e}")
-        return jsonify([])  # ✅ ป้องกัน error ไปยัง frontend
+        return jsonify([])
+
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
 
 
 # @app.route("/api/oee_<line_id>")
